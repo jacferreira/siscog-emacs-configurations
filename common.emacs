@@ -1,6 +1,15 @@
 ;; Hide toolbar
 (tool-bar-mode 0)
 
+;; MELPA
+(when (>= emacs-major-version 24)
+  (require 'package)
+  (add-to-list
+   'package-archives
+   '("melpa" . "http://melpa.org/packages/")
+   t)
+  (package-initialize))
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -42,8 +51,14 @@
 (setq make-backup-files nil)
 
 ;; enable ido-mode
-(ido-mode t)
-(setq ido-enable-flex-matching t)
+;;(require 'ido/ido-ubiquitous/smex/flx-ido/ido-vertical-mode)
+(ido-mode 1)
+(ido-everywhere 1)
+(ido-ubiquitous-mode 1)
+(smex-initialize)
+(flx-ido-mode 1)
+(ido-vertical-mode 1)
+(global-set-key (kbd "M-x") #'smex)
 
 ;; pabbrev
 (add-to-list 'load-path "z:/emacs/pabbrev/")

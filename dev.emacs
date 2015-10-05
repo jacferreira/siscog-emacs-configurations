@@ -4,9 +4,13 @@
 (defvar *new-odbc-names* t)
 
 ;; MELPA
-(require 'package)
-(add-to-list 'package-archives
-  '("melpa" . "http://melpa.milkbox.net/packages/") t)
+;; (when (>= emacs-major-version 24)
+;;   (require 'package)
+;;   (add-to-list
+;;    'package-archives
+;;    '("melpa" . "http://melpa.org/packages/")
+;;    t)
+;;   (package-initialize))
 
 ;; Load SC-EMACS
 (defvar *use-slime* t)
@@ -17,6 +21,9 @@
 
 ;; Load other user specific customization.
 (load (format "%s/custom/sc-after.el" (getenv "SISCOG_EMACS_DIR_LOCAL")))
+
+;; source file redirection
+(setq sc-source-file-redirection-enabled :remote)
 
 ;; color theme
 (add-to-list 'load-path "z:/emacs/color-theme-6.6.0/")
