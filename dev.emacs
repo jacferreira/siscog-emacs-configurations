@@ -75,3 +75,24 @@
 
 ;; cygwin variable
 (setenv "CYGWIN" "nodosfilewarning")
+
+;; htmlize
+(require 'htmlize)
+
+(defun export-buffer-to-html ()
+  (interactive)
+  (let ((themes custom-enabled-themes))
+    (mapc #'disable-theme themes)
+    (unwind-protect
+         (with-current-buffer (htmlize-buffer)
+           (let ((file (make-temp-file "htmlized-buffer-" nil ".html")))
+             (write-file file)
+             (browse-url file))
+           (kill-buffer))
+      (mapc #'enable-theme themes))))
+
+;; auto-complete + slime
+(add-hook 'slime-mode-hook 'set-up-slime-ac)
+(add-hook 'slime-repl-mode-hook 'set-up-slime-ac)
+(eval-after-load "auto-complete"
+		 '(add-to-list 'ac-modes 'slime-repl-mode))

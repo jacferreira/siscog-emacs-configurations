@@ -55,16 +55,16 @@
 (ido-mode 1)
 (ido-everywhere 1)
 (ido-ubiquitous-mode 1)
-(smex-initialize)
-(flx-ido-mode 1)
+;;(smex-initialize)
+;;(flx-ido-mode 1)
 (ido-vertical-mode 1)
 (global-set-key (kbd "M-x") #'smex)
 
 ;; pabbrev
-(add-to-list 'load-path "z:/emacs/pabbrev/")
-(require 'pabbrev)
-(eval-after-load "pabbrev"
-  (global-pabbrev-mode))
+;; (add-to-list 'load-path "z:/emacs/pabbrev/")
+;; (require 'pabbrev)
+;; (eval-after-load "pabbrev"
+;;   (global-pabbrev-mode))
 
 ;; save workspace on exit
 (desktop-save-mode 1)
